@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    Rock Paper Scissors Lizard Spock Part  </title>
+</head>
+
+<body>
+  <h1> Rock! Paper? Scissors... Lizard? SPOCK!!!!!!!.</h1>
+  <div>
+  <p id = "directions-text"> press r, p, s, l or $ to start playing</p>
+  <p id = "userChoice-text"></p>
+  <p id = "computerChoice-text"></p>
+  <p id = "wins-text"></p>
+  <p id = "lossess-text"></p>
+  <p id = "ties-text"></p>
+
+</div>
+
+  <div id=  "game"     >
+
+  </div>
+
+  <script type="text/javascript">
+//declare permenant variables first 
+var computerChoices = ["r", "p", "s", "l", "$"];
+
+// Creates variables that call ids in the html document.
+  var wins   = 0; 
+  var losses = 0; 
+  var ties   = 0; 
+
+
+  //followed by ones that change/call the html
+  var userChoiceText =     document.getElementById("userChoice-text");
+  var computerChoiceText = document.getElementById("computerChoice-text");
+  var winsText =           document.getElementById("wins-text");
+  var lossText =           document.getElementById("lossess-text");
+  var tiesText =           document.getElementById("ties-text")
+ // <--------------------------------------------------------               Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+ 
+// This function is run whenever the user presses a key.
+  
+  
+  document.onkeyup = function(event) {
+   
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    var userGuess = event.key; 
+    userGuess = userGuess.toLowerCase();
+    console.log(userGuess)
+  
+  // <--------------------------------------------------------     Determines which key was pressed 
+ // how the fuck does the random computer element work
+      //<--------------------------------------------------------                               Alerts the key the user pressed (userGuess).
+
+    if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s") || (userGuess === "l") || (userGuess === "$")) {
+
+    
+     if ((userGuess === computerGuess)) {
+      ties++;
+    }
+     if ((userGuess === "r" && computerGuess === "s") || (userGuess === "r" && computerGuess === "l")){
+     wins++;
+    }
+    
+     if ((userGuess === "r" && computerGuess === "p") || (userGuess === "r" && computerGuess === "$")){
+      losses++;
+      }
+     if ((userGuess === "p" && computerGuess === "r") || (userGuess === "p" && computerGuess === "$")){
+      wins++;
+     }
+     if ((userGuess === "p" && computerGuess === "s") || (userGuess === "p" && computerGuess === "l")){
+      losses++;
+      }
+  
+     if ((userGuess === "s" && computerGuess === "p") || (userGuess === "s" && computerGuess === "l")){
+      wins++;
+      }
+     if ((userGuess === "s" && computerGuess === "r") || (userGuess === "p" && computerGuess === "$")){
+      losses++;
+      }
+      if ((userGuess === "$" && computerGuess === "s") || (userGuess === "$" && computerGuess === "r" )){
+      losses++;
+     }
+      if ((userGuess === "$" && computerGuess === "$") || (userGuess === "$" && computerGuess === "p" )){
+      wins++;
+    }
+      if ((userGuess === "l" && computerGuess === "s") || (userGuess === "l" && computerGuess === "r" )){
+      losses++;
+     }
+      if ((userGuess === "l" && computerGuess === "$") || (userGuess === "l" && computerGuess === "p" )){
+      wins++;
+      }
+    if (userGuess === "r"){
+      userGuess = "Rock!"
+    }
+    if (userGuess === "p"){
+      userGuess = "Paper..."
+    }
+    if (userGuess === "s"){
+      userGuess = "Scissors?"
+
+    }if (userGuess === "l"){
+      userGuess = "Lizard?"
+    }if (userGuess === "$"){
+      userGuess = "SPOCK!!!!!!!!!!!!!!!!!!!!"
+    }
+    if (computerGuess === "r"){
+      computerGuess = "Rock!"
+    }
+    if (computerGuess === "p"){
+      computerGuess = "Paper..."
+    }
+    if (computerGuess === "s"){
+      computerGuess = "Scissors?"
+
+    }if (computerGuess === "l"){
+      computerGuess = "Lizard?"
+    }if (computerGuess === "$"){
+      computerGuess = "SPOCK!!!!!!!!!!!!!!!!!!!!"
+    };
+  lossText.textContent = "Losses: " + losses;
+  winsText.textContent = "Wins: " + wins;
+  userChoiceText.textContent = "You chose: "+ userGuess;
+  computerChoiceText.textContent = "The computer chose: " +computerGuess;
+  tiesText.textContent = "Ties: " + ties;
+  
+  }
+};
+  </script>
+<style>
+body{
+  background: skyblue;
+}
+</style>
+</body>
+
+</html>
